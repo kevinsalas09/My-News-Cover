@@ -34,8 +34,8 @@ if (!empty($_REQUEST['status'])) {
                 <form action="login.php" method="POST" role="form">
                     <h2 style="text-align: center;">Login</h2>
                     <div class="form-group">
-                        <label for="">User</label>
-                        <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+                        <label for="">Email</label>
+                        <input type="text" class="form-control" name="email">
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
@@ -51,7 +51,6 @@ if (!empty($_REQUEST['status'])) {
             </div>
         </div>
     </div>
-
 
 </body>
 

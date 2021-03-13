@@ -18,7 +18,7 @@ if (!$user) {
 
 <?php
 include 'functions.php';
-$categories = getCatgories();
+$sources = getSources($user['id']);
 ?>
 
 <body>
@@ -53,15 +53,17 @@ $categories = getCatgories();
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Actions</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <?php
-                foreach ($categories as $cat) {
+                foreach ($sources as $sou) {
                     echo "<tr>";
-                    echo "<td>$cat[1]</td>";
+                    echo "<td>$sou[1]</td>";
+                    echo "<td>$sou[2]</td>";
                     echo "<td> <a href='#'>Delete</a> <a href='#'>Edit</a></td>";
                     echo "</tr>";
                 }
@@ -74,6 +76,6 @@ $categories = getCatgories();
         </div>
     </div>
 </div>
-</body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
 </html>

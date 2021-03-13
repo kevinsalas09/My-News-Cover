@@ -55,6 +55,22 @@ function newCategorie($user)
     return true;
 }
 
+function newFeed($user)
+{
+    $conn = getConnection();
+    $sql = "INSERT INTO news_sources(`url`, `name`, `category_id`, `user_id`) 
+            VALUES ('{$user['url']}', '{$user['name']}', '{$user['category']}', '{$user['user_id']}')";
+    $conn->query($sql);
+
+    if ($conn->connect_errno) {
+        $conn->close();
+        return false;
+    }
+
+    $conn->close();
+    return true;
+}
+
 function getCatgories()
 {
     $conn = getConnection();
@@ -63,5 +79,19 @@ function getCatgories()
 
     $conn->close();
 
+    return $result->fetch_all();
+}
+
+function getSources($id)
+{
+    $conn = getConnection();
+    $sql = "SELECT news_sources.id, news_sources.name, categories.name 
+            FROM news_sources 
+            INNER JOIN categories 
+            ON news_sources.category_id = categories.id 
+            WHERE news_sources.user_id = $id 
+            ORDER BY news_sources.name";
+    $result = $conn->query($sql);
+    $conn->close();
     return $result->fetch_all();
 }

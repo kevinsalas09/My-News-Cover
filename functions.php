@@ -95,3 +95,40 @@ function getSources($id)
     $conn->close();
     return $result->fetch_all();
 }
+
+function getUserFeed($id)
+{
+    $conn = getConnection();
+    $sql = "SELECT * FROM news_sources
+            WHERE user_id = $id";
+    $result = $conn->query($sql);
+    $conn->close();
+    return $result->fetch_all();
+}
+
+function addNew($new)
+{
+    $conn = getConnection();
+    $sql = "INSERT INTO `news`(`title`, `short_description`, `perman_link`, `date`, `image_link`, `news_source_id`, `user_id`, `category_id`) 
+            VALUES ('{$new['title']}', '{$new['short_description']}', '{$new['perman_link']}', '{$new['date']}', '{$new['image_link']}',
+            '{$new['news_source_id']}', '{$new['user_id']}', '{$new['category_id']}')";
+    $conn->query($sql);
+
+    if ($conn->connect_errno) {
+        $conn->close();
+        return false;
+    }
+
+    $conn->close();
+    return true;
+}
+
+function getNews($id)
+{
+    $conn = getConnection();
+    $sql = "SELECT * FROM news
+            WHERE user_id = $id";
+    $result = $conn->query($sql);
+    $conn->close();
+    return $result->fetch_all();
+}

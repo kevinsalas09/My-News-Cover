@@ -16,7 +16,6 @@ if ($_POST) {
         "category" => $category,
         "user_id" => $user_id
     );
-    print_r($array);
     $nuevo = newFeed($array);
     if ($nuevo) {
         echo '<script>location.href = "menu.php"</script>';

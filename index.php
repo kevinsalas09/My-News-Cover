@@ -42,6 +42,7 @@ if (!empty($_REQUEST['status'])) {
                      <small id="emailHelp" class="form-text text-muted"><?php echo $message; ?></small>
                 </div>
                 <div class="form-group text-center">
+                    <br>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </form>

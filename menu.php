@@ -18,6 +18,7 @@ if (!$user) {
 
 <?php
 include 'functions.php';
+
 $categories = getCatgories();
 
 $news = getNews($user['id']);
@@ -26,7 +27,7 @@ $news = getNews($user['id']);
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin: 0 6%">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">My News Cover</a>
+        <a class="navbar-brand" href="menu.php">My News Cover</a>
         <div class="d-flex" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
@@ -55,19 +56,39 @@ $news = getNews($user['id']);
     <div class="row">
 
     <?php
-    foreach($news as $new){ 
-        echo "<div class='col-sm-4' style='margin-top: 25px'>
-            <div class='card' style='width: 18rem;'> 
-            <p class='card-text'>" . $new[4] . "</p>
-            <img src=" . $new[5] . " class='card-img-top'>
-            <div class='card-body'> 
-            <h5 class='card-title'>" . $new[1] . "</h5>
-            <p class='card-text'>" . $new[2] . "</p>
-            <a href=" . $new[3] . " class='card-link'>Link</a>
+    if (count($news)==0){
+        ?>
+            <div class="col-md-4">
             </div>
+            <div class="col-md-4 text-center">
+                <br>
+                <br>
+                <h2 style="text-align: center;">Looks like you dont have any feeds</h2>
+                <br>
+                <a  style="text-align: center;" class="btn btn-primary" href="new_feed.php" role="button">Add</a>
             </div>
-            </div>";
-    }
+            <div class="col-md-4">
+            </div>
+        <?php
+        }
+    else{
+        foreach($news as $new){ 
+            echo "<div class='col-sm-4' style='margin-top: 25px'>
+                <div class='card' style='width: 18rem;'> 
+                <p class='card-text'>" . substr($new[4], 0, -5) . "</p>
+                <img src=" . $new[5] . " class='card-img-top'>
+                <div class='card-body'> 
+                <h5 class='card-title'>" . $new[1] . "</h5>
+                <p class='card-text'>" . $new[2] . "</p>
+                <a href=" . $new[3] . " class='card-link'>Go to site</a>
+                </div>
+                </div>
+                </div>";
+        }
+            
+        
+        }
+    
     ?>
     </div>
 </div>

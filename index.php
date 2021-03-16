@@ -45,6 +45,10 @@ if (!empty($_REQUEST['status'])) {
                     <br>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
+                <div class="form-group">
+                    <br>
+                    <label>If you dont have an account, <a href="register_form.php">Singup Here</a></label>
+                </div>
             </form>
         </div>
         <div class="col-md-4">

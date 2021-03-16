@@ -24,7 +24,7 @@ $sources = getSources($user['id']);
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin: 0 6%">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">My News Cover</a>
+        <a class="navbar-brand" href="menu.php">My News Cover</a>
         <div class="d-flex" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">

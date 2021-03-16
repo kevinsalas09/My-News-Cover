@@ -5,6 +5,8 @@ $user = $_SESSION['user'];
 
 include 'functions.php';
 //Feed URLs
+
+
 $info = getUserFeed($user['id']);
 $aux = array();
 foreach ($info as $links) {
@@ -25,7 +27,6 @@ foreach ($info as $links) {
         else{
             $imageAlt = "https://kknd26.ru/images/no_photo.png";
         }
-        
         $date = "". $item->pubDate;
         $array = array(
             "title" => $item->title,
@@ -39,6 +40,6 @@ foreach ($info as $links) {
         );
         addNew($array);
     }
-    //echo '<script>location.href = "menu.php"</script>';
-    
+    echo '<script>location.href = "menu.php"</script>';
+
 }
